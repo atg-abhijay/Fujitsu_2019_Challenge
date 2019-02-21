@@ -5,16 +5,15 @@ def main():
     with open('employees.dat') as infile:
         df = pd.read_csv(infile, comment='#', header=None, names=['emp_number', 'emp_first_name', 'emp_last_name'], sep=" |,", engine='python')
 
-    sorted_by_num = df.sort_values(by=['emp_number'])
-    print_in_format("Processing by employee number...", sorted_by_num)
+    process_dataframe(df, 'emp_number', 'Processing by employee number...')
     print()
-    sorted_by_last_name = df.sort_values(by=['emp_last_name'])
-    print_in_format("Processing by last (family) Name...", sorted_by_last_name)
+    process_dataframe(df, 'emp_last_name', 'Processing by last (family) Name...')
 
 
-def print_in_format(message, dataframe):
+def process_dataframe(dataframe, sort_column, message):
+    sorted_df = dataframe.sort_values(by=[sort_column])
     print(message)
-    for record in dataframe.itertuples(index=False, name=None):
+    for record in sorted_df.itertuples(index=False, name=None):
         print(str(record[0]) + ',' + record[1] + ' ' + record[2])
 
 
