@@ -29,5 +29,5 @@ pip install -r "requirements.txt"
 
 To run the challenge, please execute the following command from the location fo the file *EReport.py*:
 ```python
-python3 EReport.py
+python EReport.py
 ```
